@@ -163,7 +163,15 @@
  <h2>Atividade 5</h2>
  Escolha um número de 1 a 100
  <input type="number" name="" id="numin">
+ <button id="submit">
+    enviar
+ </button>
  <div id="previsao"></div>
+ <br>
+ <div id="previsoesantigas">
+
+ </div>
+ <br>
  <div id="reiniciar"></div>
  
  <script>
@@ -171,12 +179,15 @@
      const input = document.getElementById("numin");
      const previsao = document.getElementById("previsao");
      const reiniciarDiv = document.getElementById("reiniciar");
- 
-     input.addEventListener("input", () => {
+    const enviar = document.getElementById("submit")
+    const previsoesantigas = document.getElementById("previsoesantigas")
+     enviar.addEventListener("click", () => {
          if (input.value < numerototal) {
              previsao.innerHTML = "maior";
+             previsoesantigas.innerHTML+=`${input.value} - maior<br>`
          } else if (input.value > numerototal) {
              previsao.innerHTML = "menor";
+             previsoesantigas.innerHTML+=`${input.value} - menor<br>`
          } else {
              previsao.innerHTML = "acertou";
  
