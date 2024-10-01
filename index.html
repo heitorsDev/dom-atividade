@@ -160,25 +160,42 @@
             });
         });
     </script>
-    <h2>Atividade 5</h2>
-    Escolha um número de 1 a 100
-    <input type="number" name="" id="numin">
-    <div id="previsao"></div>
-    <script>
-        const numerototal = parseInt(Math.random() * 100)
-        const input = document.getElementById("numin")
-        const previsao = document.getElementById("previsao")
-        console.log(numerototal)
-        input.addEventListener("input", () => {
-            if (input.value < numerototal) {
-                previsao.innerHTML = "maior"
-            } else if (input.value > numerototal) {
-                previsao.innerHTML = "menor"
-            } else {
-                previsao.innerHTML = "acertou"
-            }
-        })
-    </script>
+ <h2>Atividade 5</h2>
+ Escolha um número de 1 a 100
+ <input type="number" name="" id="numin">
+ <div id="previsao"></div>
+ <div id="reiniciar"></div>
+ 
+ <script>
+     let numerototal = Math.floor(Math.random() * 100) + 1;
+     const input = document.getElementById("numin");
+     const previsao = document.getElementById("previsao");
+     const reiniciarDiv = document.getElementById("reiniciar");
+ 
+     input.addEventListener("input", () => {
+         if (input.value < numerototal) {
+             previsao.innerHTML = "maior";
+         } else if (input.value > numerototal) {
+             previsao.innerHTML = "menor";
+         } else {
+             previsao.innerHTML = "acertou";
+ 
+             if (!reiniciarDiv.querySelector("button")) {
+                 let button = document.createElement("button");
+                 button.innerText = "reiniciar";
+                 button.id = "buttonRe";
+                 button.addEventListener("click", () => {
+                     input.value = "";
+                     numerototal = Math.floor(Math.random() * 100) + 1; 
+                     previsao.innerHTML = ""; 
+                     reiniciarDiv.removeChild(button); 
+                 });
+                 reiniciarDiv.appendChild(button);
+             }
+         }
+     });
+ </script>
+ 
     <style>
         .div1 {
             width: 100px;
